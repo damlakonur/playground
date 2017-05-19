@@ -28,7 +28,12 @@ class Book:
         f.close()
 
     def load(self):
-        f = open("Phonebook.txt", "r")
+        try:
+            f = open("Phonebook.txt", "r")
+        except:
+            print("Phonebook is empty!")
+            return
+
         for user_index in range(int(f.readline())):
             email_count, phone_count = [int(i) for i in f.readline().split(" ")]
             *name, surname = f.readline().split()
